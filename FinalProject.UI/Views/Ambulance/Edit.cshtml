@@ -1,0 +1,37 @@
+﻿@model FinalProject.UI.AmbulanceDto
+
+@{
+    ViewData["Title"] = "Edit Ambulance";
+}
+
+<h3>Edit Ambulance</h3>
+
+<form method="post">
+    <input type="hidden" asp-for="@Model.AmbulanceId" />
+    <div class="form-group mb-3">
+        <label asp-for="VehicleNumber" class="form-label"></label>
+        <input asp-for="VehicleNumber" class="form-control" />
+        <span asp-validation-for="VehicleNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="VehicleType" class="form-label"></label>
+        <input asp-for="VehicleType" class="form-control" />
+        <span asp-validation-for="VehicleType" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="DriverName" class="form-label"></label>
+        <input asp-for="DriverName" class="form-control" />
+        <span asp-validation-for="DriverName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="MobileNumber" class="form-label"></label>
+        <input asp-for="MobileNumber" class="form-control" />
+        <span asp-validation-for="MobileNumber" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>

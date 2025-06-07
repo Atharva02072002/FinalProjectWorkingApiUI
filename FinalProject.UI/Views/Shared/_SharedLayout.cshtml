@@ -1,0 +1,263 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - HOSPITAL MANAGEMENT SYSTEM</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background-color: #e9f2fb;
+            color: #333;
+        }
+
+        body {
+            padding-top: 60px; /* Height of topbar */
+        }
+
+        #topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 1030;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+        }
+
+            #topbar .logo {
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: #007bff;
+            }
+
+        #sidebar {
+            position: fixed;
+            top: 60px; /* Below topbar */
+            left: 0;
+            width: 250px;
+            height: calc(100% - 60px);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+            overflow-y: auto;
+            transition: width 0.4s ease;
+            z-index: 1020;
+        }
+
+            #sidebar.hidden {
+                width: 0;
+                overflow: hidden;
+            }
+
+            #sidebar .nav-link {
+                color: #333;
+                font-weight: 500;
+                padding: 0.75rem 1rem;
+                margin: 0.3rem 1rem;
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.3);
+                transition: background 0.3s, color 0.3s;
+            }
+
+                #sidebar .nav-link:hover {
+                    background-color: rgba(0, 123, 255, 0.15);
+                    color: #007bff;
+                }
+
+            #sidebar .user-info {
+                padding: 1.5rem 1rem;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                text-align: center;
+            }
+
+                #sidebar .user-info img {
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    border: 3px solid #ffffffaa;
+                    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+                }
+
+            #sidebar .user-name {
+                margin-top: 0.5rem;
+                font-weight: 600;
+                font-size: 1rem;
+                color: #007bff;
+                white-space: nowrap;
+            }
+
+        #content {
+            margin-left: 250px;
+            padding: 2rem;
+            transition: margin-left 0.4s ease;
+            background-color: #f8f9fa;
+            min-height: calc(100vh - 60px);
+        }
+
+        #sidebar.hidden ~ #content {
+            margin-left: 0;
+        }
+
+        #toggle-btn {
+            position: fixed;
+            top: 70px;
+            left: 260px;
+            z-index: 1040;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(6px);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.4rem;
+            color: #007bff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            transition: left 0.4s ease;
+        }
+
+        #sidebar.hidden + #toggle-btn {
+            left: 10px;
+        }
+
+        .nav-link i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Topbar -->
+    <div id="topbar">
+        <div class="logo">Hospital Management System</div>
+        <div class="auth-section">
+            @if (HttpContextAccessor.HttpContext?.User?.Identity?.IsAuthenticated == true)
+            {
+                <form method="post" asp-controller="Account" asp-action="Logout" class="d-inline">
+                    <button type="submit" class="btn btn-outline-danger">Logout</button>
+                </form>
+            }
+            else
+            {
+                <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Login">Login</a>
+            }
+        </div>
+    </div>
+
+    <!-- Toggle Button -->
+    <button id="toggle-btn" title="Toggle Sidebar">&#9776;</button>
+
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="user-info">
+            <img src="/images/user-profile-placeholder.png" alt="User profile" />
+            <div class="user-name">
+                @(HttpContextAccessor.HttpContext?.User?.Identity?.IsAuthenticated == true
+                                ? HttpContextAccessor.HttpContext.User.Identity.Name
+                                : "Guest")
+            </div>
+        </div>
+
+        <ul class="nav flex-column flex-grow-1">
+            @if (User.IsInRole("Receptionist"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index"><i class="bi bi-house"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Patient" asp-action="Index1"><i class="bi bi-door-open"></i> Patients</a>
+                </li>               
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Room" asp-action="Index1"><i class="bi bi-door-open"></i> Rooms</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Department" asp-action="Index1"><i class="bi bi-door-open"></i> Departments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Employee" asp-action="Index1"><i class="bi bi-door-open"></i> Employees</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Ambulance" asp-action="Index1"><i class="bi bi-door-open"></i> Ambulance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="DischargedPatient" asp-action="Index"><i class="bi bi-door-open"></i> Discharged Patients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="Home" asp-action="Landing">Home</a>
+                </li>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index"><i class="bi bi-house"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Patient" asp-action="Index"><i class="bi bi-door-open"></i> Patients</a>
+                </li>               
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Room" asp-action="Index"><i class="bi bi-door-open"></i> Rooms</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Department" asp-action="Index"><i class="bi bi-door-open"></i> Departments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Employee" asp-action="Index"><i class="bi bi-door-open"></i> Employees</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Ambulance" asp-action="Index"><i class="bi bi-door-open"></i> Ambulance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="DischargedPatient" asp-action="Index"><i class="bi bi-door-open"></i> Discharged Patients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="Home" asp-action="Landing">Home</a>
+                </li>
+            }
+        </ul>
+
+    </nav>
+
+    <!-- Main Content -->
+    <div id="content">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const toggleBtn = document.getElementById('toggle-btn');
+        const content = document.getElementById('content');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('hidden');
+            if (sidebar.classList.contains('hidden')) {
+                content.style.marginLeft = "0";
+                toggleBtn.style.left = "10px";
+            } else {
+                content.style.marginLeft = "250px";
+                toggleBtn.style.left = "260px";
+            }
+        });
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

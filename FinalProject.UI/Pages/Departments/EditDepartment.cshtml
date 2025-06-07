@@ -1,0 +1,33 @@
+﻿@page "{id:int}"
+@using FinalProject.UI.Pages.Departments
+@model EditModel
+@{
+    ViewData["Title"] = "Edit Department";
+}
+
+<h3 class="text-secondary">Edit Department</h3>
+
+<form method="post" class="col-9">
+    <input type="hidden" asp-for="Department.DepartmentId" />
+    <div class="form-group mb-3">
+        <label asp-for="Department.DeptName" class="form-label">Department Name</label>
+        <input asp-for="Department.DeptName" class="form-control" />
+        <span asp-validation-for="Department.DeptName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Department.HODName" class="form-label">HOD Name</label>
+        <input asp-for="Department.HODName" class="form-control" />
+        <span asp-validation-for="Department.HODName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Department.PhoneExtensionNo" class="form-label">Phone Extension No</label>
+        <input asp-for="Department.PhoneExtensionNo" class="form-control" />
+        <span asp-validation-for="Department.PhoneExtensionNo" class="text-danger"></span>
+    </div>  
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+
+<a asp-page="Index" class="btn btn-secondary mt-3">Back to List</a>

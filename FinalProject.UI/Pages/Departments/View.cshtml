@@ -1,0 +1,24 @@
+﻿@page
+@using FinalProject.UI.Pages.Departments
+@model ViewModel
+@{
+    ViewData["Title"] = "Department Details";
+}
+<h2 class="text-secondary">Department Details</h2>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Department: @Model.Department.DeptName</h5>
+        <p class="card-text"><strong>Head of Department:</strong> @Model.Department.HODName</p>
+        <p class="card-text"><strong>Phone Extension:</strong> @Model.Department.PhoneExtensionNo</p>
+        <p class="card-text"><strong>Empaneled Doctors:</strong></p>
+        <ul>
+            @foreach (var doctor in Model.Department.EmpaneledDoctorNames)
+            {
+                <li>@doctor</li>
+            }
+        </ul>
+        <a asp-page="Edit" asp-route-id="@Model.Department.DepartmentId" class="btn btn-primary">Edit</a>
+        <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

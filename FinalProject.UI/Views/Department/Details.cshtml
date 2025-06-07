@@ -1,0 +1,31 @@
+﻿@model FinalProject.UI.DepartmentDto
+
+@{
+    ViewData["Title"] = "Department Details";
+}
+
+<h3>Patient Details</h3>
+<dl class="row">
+    <dt class="col-sm-3">Department Names</dt>
+    <dd class="col-sm-9">@Model.DeptName</dd>
+
+    <dt class="col-sm-3">HODName</dt>
+    <dd class="col-sm-9">@Model.HODName</dd>
+
+
+    <dt class="col-sm-3">EmpaneledDoctors</dt> 
+    <dd class="col-sm-9">
+        @foreach (var doctor in Model.EmpaneledDoctorNames)
+        {
+            @doctor <br />
+        }
+    </dd>
+
+
+   
+
+    
+</dl>
+
+@* <a asp-action="Edit" asp-route-id="@Model.PatientId" class="btn btn-primary">Edit</a> *@
+@* <a asp-action="Index" class="btn btn-secondary">Back to List</a> *@

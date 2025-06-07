@@ -1,0 +1,18 @@
+﻿@page "{id:int}"
+@using FinalProject.UI.Pages.Rooms
+@model ViewModel
+@{
+    ViewData["Title"] = "Room Details";
+}
+
+<h2>Room Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Room Number: @Model.Room.RoomNumber</h5>
+        <p class="card-text"><strong>Price:</strong> @Model.Room.Price.ToString("C")</p>
+        <p class="card-text"><strong>Bed Type:</strong> @Model.Room.BedType</p>
+        <a asp-page="Edit" asp-route-id="@Model.Room.RoomId" class="btn btn-primary">Edit</a>
+        <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

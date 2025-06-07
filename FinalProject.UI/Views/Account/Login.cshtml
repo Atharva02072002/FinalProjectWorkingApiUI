@@ -1,0 +1,265 @@
+﻿@using FinalProject.UI.Models.ViewModels
+@model LoginModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Florence Medical Group</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <style>
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #e6f7ff; /* Light blue background */
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff; /* White background for container */
+
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            max-width: 500px; /* Adjusted width */
+
+            width: 100%;
+        }
+
+        .form-side {
+            flex-grow: 1;
+            padding: 40px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333; /* Darker color for heading */
+        }
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #2ba96c; /* Green button */
+
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+            .login-btn:hover {
+                background-color: #23965d; /* Darker green on hover */
+            }
+
+        .register-text {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+            .register-text a {
+                color: #2ba96c; /* Green link */
+
+                text-decoration: none;
+                font-weight: bold;
+            }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="form-side">
+            <h2>Login</h2>
+            <div class="m-1 p-1">
+                <div class="text-danger" asp-validation-summary="All">
+                    <form asp-action="Login" asp-controller="Account" method="post">
+                        <input type="hidden" asp-for="ReturnUrl" />
+                        <div class="form-group">
+                            <input asp-for="Username" class="form-control" placeholder="Username" />
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
+                        </div>
+                        <button type="submit" class="btn login-btn">Login</button>
+                    </form>
+                    <p class="register-text">Don't have an account? <a href="/Account/Register">Register</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* @using FinalProject.UI *@
+@* @model LoginViewModel *@
+@* @{ *@
+@*     Layout = null; *@
+@* } *@
+@* <!DOCTYPE html> *@
+@* <html lang="en"> *@
+@* <head> *@
+@*     <meta charset="utf-8" /> *@
+@*     <meta name="viewport" content="width=device-width, initial-scale=1" /> *@
+@*     <title>Login - Hospital Management System</title> *@
+
+@*     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+@*     <link rel="stylesheet" href="~/css/site.css" /> *@
+
+@*     <style> *@
+@*         body { *@
+@*             margin: 0; *@
+@*             padding: 0; *@
+@*             font-family: 'Segoe UI', sans-serif; *@
+@*             background: url('/images/Login.jpg') no-repeat center center fixed; *@
+@*             background-size: cover; *@
+@*             height: 100vh; *@
+@*             display: flex; *@
+@*             align-items: center; *@
+@*             justify-content: center; *@
+@*             position: relative; *@
+@*         } *@
+
+@*             /* Dark overlay */ *@
+@*             body::before { *@
+@*                 content: ""; *@
+@*                 position: absolute; *@
+@*                 top: 0; *@
+@*                 left: 0; *@
+@*                 width: 100%; *@
+@*                 height: 100%; *@
+@*                 background-color: rgba(0, 0, 0, 0.6); /* adjust for brightness */ *@
+@*                 z-index: 0; *@
+@*             } *@
+
+@*         .glass-card { *@
+@*             background: rgba(255, 255, 255, 0.1); *@
+@*             backdrop-filter: blur(10px); *@
+@*             border-radius: 20px; *@
+@*             padding: 30px; *@
+@*             width: 100%; *@
+@*             max-width: 400px; *@
+@*             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); *@
+@*             color: #fff; *@
+@*             z-index: 1; *@
+@*             position: relative; *@
+@*         } *@
+
+@*             .glass-card h4 { *@
+@*                 text-align: center; *@
+@*                 margin-bottom: 20px; *@
+@*             } *@
+
+@*         .form-control { *@
+@*             background-color: rgba(255, 255, 255, 0.15); *@
+@*             border: none; *@
+@*             color: #fff; *@
+@*         } *@
+
+@*             .form-control::placeholder { *@
+@*                 color: #ddd; *@
+@*             } *@
+
+@*         .btn-login { *@
+@*             background-color: #4e9cf5; *@
+@*             border: none; *@
+@*         } *@
+
+@*         .form-label { *@
+@*             font-weight: 500; *@
+@*         } *@
+
+@*         .alert { *@
+@*             font-size: 0.9rem; *@
+@*         } *@
+@*     </style> *@
+@* </head> *@
+@* <body> *@
+@*     <div class="glass-card"> *@
+@*         <h4>👨‍⚕️ User Login</h4> *@
+
+@*         @if (!string.IsNullOrEmpty(Model.ErrorMessage)) *@
+@*         { *@
+@*             <div class="alert alert-danger">@Model.ErrorMessage</div> *@
+@*         } *@
+
+@*         <form method="post" novalidate> *@
+@*             <div class="mb-3"> *@
+@*                 <label asp-for="Username" class="form-label">Username</label> *@
+@*                 <input asp-for="Username" class="form-control" placeholder="Enter username" value="" /> *@
+@*                 <span asp-validation-for="Username" class="text-danger small"></span> *@
+@*             </div> *@
+
+@*             <div class="mb-3"> *@
+@*                 <label asp-for="Password" class="form-label">Password</label> *@
+@*                 <input asp-for="Password" type="password" class="form-control" placeholder="Enter password" value="" /> *@
+@*                 <span asp-validation-for="Password" class="text-danger small"></span> *@
+@*             </div> *@
+
+@*             <div class="d-grid"> *@
+@*                 <button type="submit" class="btn btn-login text-white"> *@
+@*                     🔐 Log In *@
+@*                 </button> *@
+@*             </div> *@
+@*         </form> *@
+@*     </div> *@
+
+@*     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
+@*     <partial name="_ValidationScriptsPartial" /> *@
+@* </body> *@
+@* </html> *@

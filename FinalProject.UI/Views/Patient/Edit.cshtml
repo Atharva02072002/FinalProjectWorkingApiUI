@@ -1,0 +1,18 @@
+﻿@model FinalProject.UI.PatientDto
+
+@{
+    ViewData["Title"] = "Edit Patient";
+}
+
+<h3>Edit Patient</h3>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="PatientId" />
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    @Html.Partial("_PatientForm", Model)
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

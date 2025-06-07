@@ -1,0 +1,38 @@
+﻿@model FinalProject.UI.PatientDto
+
+@{
+    ViewData["Title"] = "Patient Details";
+}
+
+<h3>Patient Details</h3>
+<dl class="row">
+    <dt class="col-sm-3">Full Name</dt>
+    <dd class="col-sm-9">@Model.FirstName @Model.LastName</dd>
+
+    <dt class="col-sm-3">Aadhar ID</dt>
+    <dd class="col-sm-9">@Model.AadharId</dd>
+
+    <dt class="col-sm-3">Mobile</dt>
+    <dd class="col-sm-9">@Model.MobileNumber</dd>
+
+    <dt class="col-sm-3">Gender</dt>
+    <dd class="col-sm-9">@Model.Gender</dd>
+
+    <dt class="col-sm-3">Disease</dt>
+    <dd class="col-sm-9">@Model.Disease</dd>
+
+    <dt class="col-sm-3">Symptoms</dt>
+    <dd class="col-sm-9">@Model.Symptoms</dd>
+
+    <dt class="col-sm-3">Admission Date</dt>
+    <dd class="col-sm-9">@Model.AdmissionDateTime.ToString("g")</dd>
+
+    <dt class="col-sm-3">Deposit</dt>
+    <dd class="col-sm-9">@Model.InitialDeposit</dd>
+
+    <dt class="col-sm-3">Room ID</dt>
+    <dd class="col-sm-9">@Model.RoomId</dd>
+</dl>
+@* 
+<a asp-action="Edit" asp-route-id="@Model.PatientId" class="btn btn-primary">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back to List</a> *@

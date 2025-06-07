@@ -1,0 +1,28 @@
+﻿@using FinalProject.UI
+@model IEnumerable<DepartmentDto>
+
+@{
+    ViewData["Title"] = "Departments";
+}
+
+<h3>Departments</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Department Name</th>
+            <th>HOD Name</th>
+            <th>Phone Extension No</th>
+    
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dept in Model)
+        {
+            <tr>
+                <td>@dept.DeptName</td>
+                <td>@dept.HODName</td>
+                <td>@dept.PhoneExtensionNo</td>          
+            </tr>
+        }
+    </tbody>
+</table>

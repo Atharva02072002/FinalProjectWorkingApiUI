@@ -1,0 +1,906 @@
+﻿﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florence Medical Group</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            background: url('/images/bg.jpg') no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .top-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+        }
+
+            .logo-group img {
+                height: 35px;
+                margin-right: 10px;
+            }
+
+        .top-buttons a {
+            color: white;
+            font-weight: 500;
+            margin-left: 20px;
+            text-decoration: none;
+            border: 2px solid white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+            .top-buttons a:hover {
+                background-color: white;
+                color: #000;
+            }
+
+
+        .services-section {
+            background-color: #fff;
+            padding: 70px 50px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .service-card {
+            background-color: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            padding: 50px 40px;
+            width: 100%;
+            max-width: 420px;
+            box-sizing: border-box;
+            text-align: left;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .service-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .service-card img {
+                height: 48px;
+                margin-bottom: 20px;
+            }
+
+        .service-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .service-desc {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #777;
+        }
+
+
+        .info-graphic {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+            background-color: #fafafa;
+        }
+
+            .info-graphic img {
+                width: 80%;
+                max-width: 1200px;
+                height: auto;
+                display: block;
+                border-radius: 20px;
+            }
+
+        .doctor-section {
+            background-color: #fff;
+            padding: 80px 60px;
+            text-align: center;
+        }
+
+            .doctor-section h2 {
+                font-size: 2.5rem;
+                font-weight: 600;
+                color: #000;
+                margin-bottom: 40px;
+            }
+
+        .doctor-image {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            display: block;
+        }
+
+        .doctor-info {
+            margin-top: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .doctor-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #37929b;
+            margin-bottom: 10px;
+        }
+
+        .doctor-title {
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+
+        .doctor-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .highlight-message {
+            background-color: #fafafa;
+            text-align: center;
+            padding: 60px 30px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+            .highlight-message p {
+                font-size: 24px;
+                font-weight: 400;
+                line-height: 1.6;
+                color: #6c757d;
+                max-width: 900px;
+                margin: auto;
+            }
+
+            .highlight-message .highlight {
+                font-weight: 700;
+                color: #37929b;
+            }
+
+        .appointment-banner {
+            background: linear-gradient(135deg, #7dd3f0, #62b6c9);
+            padding: 60px 40px;
+            margin: 60px auto;
+            max-width: 1200px;
+            border-radius: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .appointment-banner::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: -20%;
+                width: 400px;
+                height: 400px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                z-index: 1;
+            }
+
+            .appointment-banner::after {
+                content: '';
+                position: absolute;
+                bottom: -30%;
+                left: -10%;
+                width: 300px;
+                height: 300px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 50%;
+                z-index: 1;
+            }
+
+        .appointment-content {
+            z-index: 2;
+            position: relative;
+        }
+
+            .appointment-content h3 {
+                color: white;
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin: 0;
+                line-height: 1.2;
+            }
+
+        .appointment-btn {
+            background: white;
+            color: #62b6c9;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            z-index: 2;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+            .appointment-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+                color: #57b0be;
+            }
+
+        /* Location Section Styles */
+        .location-section {
+            background-color: #fff;
+            padding: 80px 60px;
+        }
+
+            .location-section h2 {
+                font-size: 2.5rem;
+                font-weight: 600;
+                color: #000;
+                margin-bottom: 50px;
+                text-align: center;
+            }
+
+        .location-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .location-info {
+            padding: 40px;
+        }
+
+            .location-info h3 {
+                font-size: 2rem;
+                font-weight: 700;
+                color: #37929b;
+                margin-bottom: 30px;
+            }
+
+        .location-details {
+            margin-bottom: 40px;
+        }
+
+        .location-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .location-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #7dd3f0, #62b6c9);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+            .location-icon i {
+                font-size: 20px;
+                color: white;
+            }
+
+        .location-text {
+            flex: 1;
+        }
+
+            .location-text h4 {
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: #000;
+                margin-bottom: 5px;
+            }
+
+            .location-text p {
+                font-size: 1rem;
+                color: #666;
+                margin: 0;
+                line-height: 1.5;
+            }
+
+        .map-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+            height: 500px;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #6c757d;
+        }
+
+            .map-placeholder i {
+                font-size: 4rem;
+                margin-bottom: 20px;
+                color: #37929b;
+            }
+
+            .map-placeholder p {
+                font-size: 1.1rem;
+                text-align: center;
+                max-width: 300px;
+            }
+
+        .directions-btn {
+            background: linear-gradient(135deg, #7dd3f0, #62b6c9);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+            .directions-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+                color: white;
+            }
+
+        /* Footer Styles */
+        .footer-section {
+            background-color: #7dd3f0;
+            padding: 40px 60px 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-left {
+            flex: 1;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+        }
+
+            .logo-icon i {
+                color: white;
+                font-size: 18px;
+            }
+
+        .footer-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 40px;
+        }
+
+            .footer-nav a {
+                color: white;
+                text-decoration: none;
+                font-size: 1rem;
+                font-weight: 500;
+                transition: opacity 0.3s ease;
+            }
+
+                .footer-nav a:hover {
+                    opacity: 0.8;
+                }
+
+        .footer-right {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+            .social-link:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            .social-link.google i {
+                color: #4285f4;
+                font-size: 18px;
+            }
+
+            .social-link.yelp i {
+                color: #d32323;
+                font-size: 18px;
+            }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 30px auto 20px;
+            max-width: 1200px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+            .footer-bottom p {
+                color: white;
+                margin: 0;
+                font-size: 0.9rem;
+                opacity: 0.9;
+            }
+
+        @@media (max-width: 1024px) {
+            .services-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .doctor-section {
+                padding: 60px 30px;
+            }
+
+                .doctor-section h2 {
+                    font-size: 2rem;
+                }
+
+            .appointment-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+                margin: 40px 20px;
+            }
+
+            .location-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .location-section {
+                padding: 60px 30px;
+            }
+
+                .location-section h2 {
+                    font-size: 2rem;
+                }
+        }
+
+        @@media (max-width: 768px) {
+            .top-nav {
+                padding: 20px 30px;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .location-info {
+                padding: 20px;
+            }
+
+                .location-info h3 {
+                    font-size: 1.5rem;
+                }
+
+            .footer-section {
+                padding: 30px 30px 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 25px;
+                text-align: center;
+            }
+
+            .footer-nav {
+                gap: 30px;
+            }
+
+            .footer-right {
+                justify-content: center;
+            }
+        }
+    </style>
+
+    <section class="hero-section">
+        <nav class="top-nav">
+            <div class="logo-group">
+                <img src="/images/logo.png" alt="Felix Medical Group Logo" />
+                <span class="fw-bold fs-4"></span>
+            </div>
+            <div class="top-buttons">
+                <a href="#contact">Contact</a>
+                <a href="Account/Login">Login Portal</a>
+            </div>
+        </nav>
+
+        <h1 class="display-3 fw-bold">Florence Medical Group</h1>
+        <p class="lead mt-3 mb-4">Dedicated to patient care and wellness for the entire family.</p>
+        <a href="#appointment" class="btn btn-light btn-lg">Schedule an Appointment</a>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="service-card">
+            <img src="/images/checkup.png" alt="Annual Checkups Icon" />
+            <div class="service-title">Annual Checkups</div>
+            <div class="service-desc">
+                At Felix Medical Group, we strive for consistency and top-of-the-line care for each patient.
+                We provide annual checkups and routine visits to maintain positive health and wellbeing.
+            </div>
+        </div>
+
+        <div class="service-card">
+            <img src="/images/sports.png" alt="Sports Medicine Icon" />
+            <div class="service-title">Sports Medicine</div>
+            <div class="service-desc">
+                Dr. Felix is a family practitioner with extensive knowledge in Sports Medicine.
+                Dr. Felix provides sports physicals and injury assessments for athletes.
+            </div>
+        </div>
+
+        <div class="service-card">
+            <img src="/images/healthcare.png" alt="Preventative Healthcare Icon" />
+            <div class="service-title">Preventative Healthcare</div>
+            <div class="service-desc">
+                The Florence Medical Group promotes proactive, integrative, and functional medicine
+                to ensure patients are on top of their health and equipped with medical resources to succeed.
+            </div>
+        </div>
+    </section>
+
+    <section class="info-graphic">
+        <img src="/images/family-beach.png" alt="Family enjoying beach time together">
+    </section>
+
+    <div class="highlight-message">
+        <p>
+            <span class="highlight">Take your health to the next level.</span>
+            We provide comprehensive medical care for the entire family.
+            Located in Riverside, CA, near Park View Hospital, our patients are at the heart of everything we do.
+        </p>
+    </div>
+
+    <section class="py-5" style="background: linear-gradient(180deg, #62b6c9, #57b0be);">
+        <div class="container text-center">
+            <p class="text-white fw-bold">REVIEWS FROM REAL PATIENTS</p>
+            <h2 class="fw-bold text-white mb-5">Hear from our patients</h2>
+
+            <div class="row mt-4">
+                <div class="col-md-4 mb-4">
+                    <div class="bg-white rounded shadow p-4 text-start">
+                        <div class="text-warning mb-2">
+                            ★ ★ ★ ★ ★
+                        </div>
+                        <p>We have been with Dr. Smith for more than 10 years! My kids are all in sports, and we are pleased that Dr. Smith is a family practice & specializes in sports medicine, too. Works great for our family!</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="rounded-circle bg-light text-center me-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <div>
+                                <strong>Robin R.</strong><br />
+                                <small>July 2018</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="bg-white rounded shadow p-4 text-start">
+                        <div class="text-warning mb-2">
+                            ★ ★ ★ ★ ★
+                        </div>
+                        <p>Dr. Johnson is a terrific doctor. I feel like I lucked out so much finding him. Dr. Johnson responds in a timely manner, and he is both very caring and knowledgeable in his practice.</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="rounded-circle bg-light text-center me-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <div>
+                                <strong>Heather D.</strong><br />
+                                <small>May 2020</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="bg-white rounded shadow p-4 text-start">
+                        <div class="text-warning mb-2">
+                            ★ ★ ★ ★ ★
+                        </div>
+                        <p>Dr. Lee is great, listens, and gives good advice to my needs. His staff, what can I say, they are wonderful and always have a positive attitude.</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="rounded-circle bg-light text-center me-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <div>
+                                <strong>Ramiro R.</strong><br />
+                                <small>Jan 2021</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="bg-white rounded shadow p-4 text-start">
+                        <div class="text-warning mb-2">
+                            ★ ★ ★ ★ ★
+                        </div>
+                        <p>Dr. Brown and his staff are wonderful... I once was talking to someone at the gym who was going on about her fantastic doctor. I told her my doctor was great as well. When she asked me the name and I told her Dr. Brown, she started to laugh... her doctor was Dr. Brown too!</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="rounded-circle bg-light text-center me-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <div>
+                                <strong>Irene B.</strong><br />
+                                <small>May 2021</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="bg-white rounded shadow p-4 text-start">
+                        <div class="text-warning mb-2">
+                            ★ ★ ★ ★ ★
+                        </div>
+                        <p>Dr. Martinez is an amazing doctor. I was worried when I was in search of a new doctor as I had had some bad experiences with a current injury I had in my knee. He took over my care and has been great ever since. The staff are kind and responsive. All around good experience thus far.</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="rounded-circle bg-light text-center me-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <div>
+                                <strong>Amber P.</strong><br />
+                                <small>Aug 2021</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="bg-white rounded shadow p-4 text-start">
+                        <div class="text-warning mb-2">
+                            ★ ★ ★ ★ ★
+                        </div>
+                        <p>Finally!!! I have found a doctor who I can trust and who makes me feel confident in his care! Pros: Treatment/Care, Personality, Promptness, and Education. HIGHLY RECOMMEND!!!</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="rounded-circle bg-light text-center me-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <div>
+                                <strong>Jay M.</strong><br />
+                                <small>Sept 2022</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="doctor-section">
+        <h2>Meet the Motivation of Florence Medical Group Team</h2>
+        <img src="./images/florencce.jpg" alt="Dr. Florence Nightingale" class="doctor-image" />
+        <div class="doctor-info">
+            <div class="doctor-name">Dr. Florence Nightingale</div>
+            <div class="doctor-description">
+                Florence Nightingale transformed nursing from an untrained job into a respected, science-based profession by introducing hygiene, training, and hospital reforms. Known as "The Lady with the Lamp," she saved thousands during the Crimean War through better sanitation and compassionate care. A pioneer in using data to drive healthcare reforms, she established the first professional nursing school, setting global standards still followed today. Naming your system <b>Felix Medical Group</b> honors her legacy of compassionate, organized, and data-driven healthcare, reflecting professionalism and trust in modern medical care.
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section" id="location">
+        <h2>Visit Our Office</h2>
+        <div class="location-container">
+            <div class="location-info">
+                <h3>Florence Medical Group</h3>
+                <div class="location-details">
+                    <div class="location-item">
+                        <div class="location-icon">
+                            <i class="bi bi-geo-alt"></i>
+                        </div>
+                        <div class="location-text">
+                            <h4>Address</h4>
+                            <p>3505 Central Ave, Suite 8<br>Riverside, CA 92503<br>Near Park View Hospital</p>
+                        </div>
+                    </div>
+
+                    <div class="location-item">
+                        <div class="location-icon">
+                            <i class="bi bi-telephone"></i>
+                        </div>
+                        <div class="location-text">
+                            <h4>Phone</h4>
+                            <p>(951) 358-2200</p>
+                        </div>
+                    </div>
+
+                    <div class="location-item">
+                        <div class="location-icon">
+                            <i class="bi bi-clock"></i>
+                        </div>
+                        <div class="location-text">
+                            <h4>Office Hours</h4>
+                            <p>
+                                Monday - Friday: 8:00 AM - 5:00 PM<br>
+                                Saturday: 9:00 AM - 2:00 PM<br>
+                                Sunday: Closed
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="location-item">
+                        <div class="location-icon">
+                            <i class="bi bi-envelope"></i>
+                        </div>
+                        <div class="location-text">
+                            <h4>Email</h4>
+                            <p>info@florencemedicalgroup.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://maps.google.com/maps?q=3505+Central+Ave,+Suite+8,+Riverside,+CA+92503" target="_blank" class="directions-btn">
+                    <i class="bi bi-compass"></i>
+                    Get Directions
+                </a>
+            </div>
+
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <i class="bi bi-geo-alt"></i>
+                    <p>Interactive map showing our location in Riverside, CA near Park View Hospital</p>
+                    <small>Click "Get Directions" for navigation</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="appointment-banner" id="appointment">
+        <div class="appointment-content">
+            <h3>Need to schedule an<br>appointment?</h3>
+        </div>
+        <a href="tel:(951)358-2200" class="appointment-btn">Schedule an Appointment</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <div class="logo-icon">
+                        <i class="bi bi-heart-pulse"></i>
+                    </div>
+                    <span>Florence Medical Group</span>
+                </div>
+            </div>
+
+            <div class="footer-center">
+                <nav class="footer-nav">
+                    <a href="#contact">Contact</a>
+                    <a href="#reviews">Reviews</a>
+                </nav>
+            </div>
+
+            <div class="footer-right">
+                <div class="social-icons">
+                    <a href="#" class="social-link google">
+                        <i class="bi bi-google"></i>
+                    </a>
+                    <a href="#" class="social-link yelp">
+                        <i class="bi bi-yelp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Florence Medical Group, LLC. | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿@using FinalProject.UI
+@model DepartmentDto
+
+@{
+    ViewData["Title"] = "Departments";
+}
+
+<h3>Departments</h3>
+<form method="post" class="col-9">
+    <div class="form-group mb-3">
+        <label class="form-label">Department Name</label>
+        <input asp-for="@Model.DeptName" class="form-control" />
+        <span asp-validation-for="@Model.DeptName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label class="form-label">HOD Name</label>
+        <input asp-for="@Model.HODName" class="form-control" />
+        <span asp-validation-for="@Model.HODName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label class="form-label">Phone Extension No</label>
+        <input asp-for="@Model.PhoneExtensionNo" class="form-control" />
+        <span asp-validation-for="@Model.PhoneExtensionNo" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<FinalProject.Shared.RoomDto>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Available Rooms</title>
+</head>
+<body>
+<h1>Available Rooms</h1>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Room Number</th>
+<th>Price</th>
+<th>Bed Type</th>
+</tr>
+</thead>
+<tbody>
+            @foreach (var room in Model)
+            {
+    <tr>
+    <td>@room.RoomNumber</td>
+    <td>@room.Price</td>
+    <td>@room.BedType</td>
+    </tr>
+            }
+</tbody>
+</table>
+</body>
+</html>

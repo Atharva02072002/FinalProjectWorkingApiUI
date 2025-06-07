@@ -1,0 +1,47 @@
+﻿@page
+@using FinalProject.UI.Pages.Departments
+@model IndexModel
+@{
+    ViewData["Title"] = "Departments";
+}
+
+<h3 class="text-secondary">Departments</h3>
+<a class="btn btn-success mb-3" asp-page="CreateDepartment">➕ Add Department</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-secondary">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>HOD</th>
+            <th>Phone Extension No</th>
+            <th>Empaneled Doctor Names</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dept in Model.Departments)
+        {
+            <tr>
+                <td>@dept.DepartmentId</td>
+                <td>@dept.DeptName</td>
+                <td>@dept.HODName</td>
+                <td>@dept.PhoneExtensionNo</td>
+                <td>
+                    @if (dept.EmpaneledDoctorNames != null && dept.EmpaneledDoctorNames.Any())
+                    {
+                        <span>@string.Join(", ", dept.EmpaneledDoctorNames)</span>
+                    }
+                    else
+                    {
+                        <span>No doctors assigned</span>
+                    }
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-page="EditDepartment" asp-route-id="@dept.DepartmentId">Edit</a>
+                    <a class="btn btn-sm btn-danger" asp-page="DeleteDepartment" asp-route-id="@dept.DepartmentId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

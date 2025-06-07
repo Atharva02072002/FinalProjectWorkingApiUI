@@ -1,0 +1,36 @@
+﻿@using FinalProject.UI
+@model IEnumerable<PatientDto>
+@{
+    ViewData["Title"] = "Patients";
+}
+<h2>Patients</h2>
+@* <a class="btn btn-success mb-3" asp-action="Create">+ New Patient</a> *@
+<a class="btn btn-success mb-3" asp-action="Available" asp-controller="Room">Available Rooms</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Aadhar</th>
+            <th>Room</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.FirstName+" "@p.LastName</td>
+                <td>@p.MobileNumber</td>
+                <td>@p.AadharId</td>
+                <td>@p.RoomId</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@p.PatientId" class="btn btn-sm btn-info">View</a>
+                    @* <a asp-action="Edit" asp-route-id="@p.PatientId" class="btn btn-sm btn-warning">Edit</a> *@
+                    @* <a asp-action="Delete" asp-route-id="@p.PatientId" class="btn btn-sm btn-danger">Delete</a> *@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

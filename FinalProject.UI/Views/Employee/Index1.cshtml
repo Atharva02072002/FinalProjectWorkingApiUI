@@ -1,0 +1,40 @@
+﻿@model IEnumerable<FinalProject.UI.EmployeeDto>
+@{
+    ViewData["Title"] = "Employee List";
+}
+
+<h2>Employee List</h2>
+
+<p>
+    @* <a asp-action="Create" class="btn btn-primary">➕ Add New Employee</a> *@
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Position</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Name</td>
+                <td>@emp.Department?.DeptName</td>
+                <td>@emp.Position</td>
+                <td>@emp.EmailId</td>
+                <td>@emp.MobileNumber</td>
+                <td>
+                     <a asp-action="Details" asp-route-id="@emp.Id" class="btn btn-info btn-sm">Details</a> 
+                    @* <a asp-action="Edit" asp-route-id="@emp.Id" class="btn btn-warning btn-sm">Edit</a> *@
+                    @* <a asp-action="DeleteEmployee" asp-route-id="@emp.Id" class="btn btn-danger btn-sm">Delete</a> *@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

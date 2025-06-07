@@ -1,0 +1,31 @@
+﻿@model FinalProject.UI.AmbulanceDto
+
+@{
+    ViewData["Title"] = "Delete Ambulance";
+}
+
+<h3>Delete Ambulance</h3>
+
+<h4>Are you sure you want to delete this ambulance?</h4>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Vehicle Number</dt>
+        <dd class="col-sm-10">@Model.VehicleNumber</dd>
+
+        <dt class="col-sm-2">Vehicle Type</dt>
+        <dd class="col-sm-10">@Model.VehicleType</dd>
+
+        <dt class="col-sm-2">Driver Name</dt>
+        <dd class="col-sm-10">@Model.DriverName</dd>
+
+        <dt class="col-sm-2">Mobile Number</dt>
+        <dd class="col-sm-10">@Model.MobileNumber</dd>
+    </dl>
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="AmbulanceId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

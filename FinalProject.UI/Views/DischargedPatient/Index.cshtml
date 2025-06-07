@@ -1,0 +1,38 @@
+﻿@using FinalProject.UI
+
+@using FinalProject.UI.DTO
+
+@model IEnumerable<DischargedPatientDto>
+
+@{
+
+    ViewData["Title"] = "Discharged Patients";
+
+}
+
+<h3>Discharged Patients</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Patient Name</th>
+            <th>Room Number</th>
+            <th>Admission Date</th>
+            <th>Discharge Date</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var patient in Model)
+
+        {
+            <tr>
+                <td>@patient.Name</td>
+                <td>@patient.RoomNumber</td>
+                <td>@patient.AdmissionDateTime.ToString("g")</td>
+                <td>@patient.DischargeDateTime.ToString("g")</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+

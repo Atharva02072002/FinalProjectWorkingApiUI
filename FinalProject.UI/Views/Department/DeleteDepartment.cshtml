@@ -1,0 +1,19 @@
+﻿@using FinalProject.UI
+@model DepartmentDto
+<h2 class="text-danger">Are you sure you want to delete this department?</h2>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <h class="card-title">@Model.DeptName</h>
+        <p class="card-text"><strong>Head of Department:</strong> @Model.HODName</p>
+        <p class="card-text"><strong>Phone Extension:</strong> @Model.PhoneExtensionNo</p>
+    </div>
+</div>
+
+<form method="post" class="d-inline">
+    <input type="hidden" asp-for="@Model.DepartmentId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+</form>
+

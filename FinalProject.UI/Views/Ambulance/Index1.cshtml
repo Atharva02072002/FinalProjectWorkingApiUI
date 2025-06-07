@@ -1,0 +1,41 @@
+﻿@model IEnumerable<FinalProject.UI.AmbulanceDto>
+
+@{
+    ViewData["Title"] = "Ambulance";
+}
+
+<h3>Ambulances</h3>
+
+<p>
+    @* <a asp-action="Create" class="btn btn-success">Create New Ambulance</a> *@
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ambulance ID</th>
+            <th>Vehicle Number</th>
+            <th>Vehicle Type</th>
+            <th>Driver Name</th>
+            <th>Mobile Number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ambulance in Model)
+        {
+            <tr>
+                <td>@ambulance.AmbulanceId</td>
+                <td>@ambulance.VehicleNumber</td>
+                <td>@ambulance.VehicleType</td>
+                <td>@ambulance.DriverName</td>
+                <td>@ambulance.MobileNumber</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@ambulance.AmbulanceId" class="btn btn-info">Details</a>
+                    @* <a asp-action="Edit" asp-route-id="@ambulance.AmbulanceId" class="btn btn-primary">Edit</a> *@
+                    @* <a asp-action="Delete" asp-route-id="@ambulance.AmbulanceId" class="btn btn-danger">Delete</a> *@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,35 @@
+﻿@model FinalProject.UI.EmployeeDto
+
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="mb-3">
+    <strong>Name:</strong> @Model.Name
+</div>
+<div class="mb-3">
+    <strong>Age:</strong> @Model.Age
+</div>
+<div class="mb-3">
+    <strong>Gender:</strong> @Model.Gender
+</div>
+<div class="mb-3">
+    <strong>Department:</strong> @Model?DeptName
+</div>
+<div class="mb-3">
+    <strong>Position:</strong> @Model.Position
+</div>
+<div class="mb-3">
+    <strong>Mobile Number:</strong> @Model.MobileNumber
+</div>
+<div class="mb-3">
+    <strong>Aadhar No:</strong> @Model.AadharNo
+</div>
+<div class="mb-3">
+    <strong>Email:</strong> @Model.EmailId
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>

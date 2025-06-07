@@ -1,0 +1,28 @@
+﻿@model FinalProject.UI.RoomDto
+
+@{
+    ViewData["Title"] = "Room Details";
+}
+
+<h3>Room Details</h3>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-3">Room ID</dt>
+        <dd class="col-sm-9">@Model.RoomId</dd>
+
+        <dt class="col-sm-3">Room Number</dt>
+        <dd class="col-sm-9">@Model.RoomNumber</dd>
+
+        <dt class="col-sm-3">Price</dt>
+        <dd class="col-sm-9">@Model.Price</dd>
+
+        <dt class="col-sm-3">Bed Type</dt>
+        <dd class="col-sm-9">@Model.BedType</dd>
+    </dl>
+</div>
+
+@* <p>
+    <a asp-action="Edit" asp-route-id="@Model.RoomId" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</p> *@

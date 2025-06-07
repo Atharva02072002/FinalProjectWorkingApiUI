@@ -1,0 +1,36 @@
+﻿@page
+@using FinalProject.UI.Pages.Rooms
+@model IndexModel
+@{
+    ViewData["Title"] = "Room List";
+}
+
+<h2>Rooms</h2>
+
+<a href="/Room/CreateRoom" class="btn btn-primary">Create New Room</a>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>Room Number</th>
+            <th>Price</th>
+            <th>Bed Type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var room in Model.Rooms)
+        {
+            <tr>
+                <td>@room.RoomNumber</td>
+                <td>@room.Price</td>
+                <td>@room.BedType</td>
+                <td>                   
+                 
+                    <a href="/Room/EditRoom?roomId=@room.RoomId" class="btn btn-warning">Edit</a>
+                    <a href="/Room/DeleteRoom?roomId=@room.RoomId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
